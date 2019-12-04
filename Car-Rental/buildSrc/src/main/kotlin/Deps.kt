@@ -13,6 +13,12 @@ object Versions {
 
     val picasso = "2.5.2"
 
+    val rxJava = "2.2.15"
+    val rxAndroid = "2.1.1"
+    val rxKotlin = "2.4.0"
+
+    val dagger = "2.25.2"
+
     val junit = "4.12"
     val extJunit = "1.1.1"
     val espresso = "3.2.0"
@@ -35,6 +41,16 @@ object Libs {
     val okhttpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
     val gson = "com.google.code.gson:gson:${Versions.gson}"
     val retrofitGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+
+    val rxJava = "io.reactivex.rxjava2:rxjava:${Versions.rxJava}"
+    val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxAndroid}"
+    val rxKotlin = "io.reactivex.rxjava2:rxkotlin:${Versions.rxKotlin}"
+
+    val dagger = "com.google.dagger:dagger:${Versions.dagger}"
+    val daggerAndroid = "com.google.dagger:dagger-android:${Versions.dagger}"
+    val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
+    val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
+    val daggerAndroidProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
 
     val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
 

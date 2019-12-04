@@ -22,6 +22,10 @@ android {
     }
 }
 
+kapt {
+    generateStubs = true
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -37,6 +41,18 @@ dependencies {
     implementation Libs.okhttpLoggingInterceptor
     implementation Libs.gson
     implementation Libs.retrofitGson
+
+    // Reactive - RxJava
+    implementation Libs.rxJava
+    implementation Libs.rxAndroid
+    implementation Libs.rxKotlin
+
+    // Dependency Injection - Dagger
+    implementation Libs.dagger
+    implementation Libs.daggerAndroid
+    implementation Libs.daggerAndroidSupport
+    kapt Libs.daggerCompiler
+    kapt Libs.daggerAndroidProcessor
 
     // Image loading - Picasso
     implementation Libs.picasso
