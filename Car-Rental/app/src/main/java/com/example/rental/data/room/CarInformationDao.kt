@@ -1,7 +1,6 @@
 package com.example.rental.data.room
 
 import androidx.room.*
-import io.reactivex.Completable
 import io.reactivex.Maybe
 import io.reactivex.Single
 
@@ -21,10 +20,8 @@ interface CarInformationDao {
     fun clear()
 
     @Transaction
-    fun updateCarInformation(list: List<Car>): Completable {
-        return Completable.fromAction {
-            clear()
-            insertAll(*list.toTypedArray())
-        }
+    fun updateCarInformation(list: List<Car>) {
+        clear()
+        insertAll(*list.toTypedArray())
     }
 }

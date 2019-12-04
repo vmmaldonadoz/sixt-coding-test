@@ -20,7 +20,11 @@ class CarInformationController @Inject constructor(
     fun updateAvailableCars(): Completable? {
         return carsService.getAvailableCars()
             .map { response -> carInformationMapper.mapListOfCars(response) }
-            .flatMapCompletable { carInformationDao.updateCarInformation(it) }
+            .switchMapCompletable { cars ->
+                Completable.fromAction {
+                    carInformationDao.updateCarInformation(cars)
+                }
+            }
     }
 
     fun getAvailableCars(): Single<List<Car>> {
