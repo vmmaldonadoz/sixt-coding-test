@@ -1,11 +1,14 @@
 package com.example.rental.di
 
-import android.app.Application
+import com.example.rental.CarRentalApp
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
+import dagger.android.AndroidInjector
+import javax.inject.Singleton
 
 
+@Singleton
 @Component(
     modules = [
         AndroidInjectionModule::class,
@@ -15,15 +18,14 @@ import dagger.android.AndroidInjectionModule
         DatabaseModule::class
     ]
 )
-interface AppComponent {
+interface AppComponent : AndroidInjector<CarRentalApp> {
 
     @Component.Factory
     interface Factory {
 
-        fun create(@BindsInstance application: Application): AppComponent
+        fun create(@BindsInstance application: CarRentalApp): AppComponent
 
     }
 
-    fun inject(app: Application)
-
+    override fun inject(instance: CarRentalApp)
 }

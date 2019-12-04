@@ -1,17 +1,17 @@
 package com.example.rental.di
 
-import android.app.Application
 import android.content.Context
+import com.example.rental.CarRentalApp
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
+import dagger.android.AndroidInjectionModule
 import javax.inject.Singleton
 
-@Module
-class AppModule {
+@Module(includes = [AndroidInjectionModule::class])
+abstract class AppModule {
 
-    @Provides
-    @Singleton
-    fun provideContext(application: Application): Context {
-        return application
-    }
+    @Binds
+    @AppContext
+    abstract fun provideAppContext(application: CarRentalApp): Context
+
 }

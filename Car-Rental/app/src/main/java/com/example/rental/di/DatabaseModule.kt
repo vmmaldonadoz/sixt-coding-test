@@ -9,11 +9,11 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class DatabaseModule {
+object DatabaseModule {
 
-    @Singleton
     @Provides
-    fun provideCarDatabase(context: Context): CarDatabase {
+    @Singleton
+    fun provideCarDatabase(@AppContext context: Context): CarDatabase {
         return Room.databaseBuilder(
             context.applicationContext,
             CarDatabase::class.java, "cars-database"
@@ -22,6 +22,7 @@ class DatabaseModule {
             .build()
     }
 
+    @Singleton
     @Provides
     fun provideCarInformationDao(database: CarDatabase): CarInformationDao {
         return database.carInformationDao()

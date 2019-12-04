@@ -11,7 +11,7 @@ import javax.inject.Inject
 class CarRentalApp : MultiDexApplication(), HasAndroidInjector {
 
     @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
+    lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
     override fun onCreate() {
         super.onCreate()
@@ -19,10 +19,11 @@ class CarRentalApp : MultiDexApplication(), HasAndroidInjector {
         DaggerAppComponent
             .factory()
             .create(this)
+            .inject(this)
     }
 
-    override fun androidInjector(): AndroidInjector<Any>? {
-        return dispatchingAndroidInjector
+    override fun androidInjector(): AndroidInjector<Any> {
+        return androidInjector
     }
 
 }
