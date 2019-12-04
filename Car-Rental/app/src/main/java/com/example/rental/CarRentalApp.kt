@@ -1,4 +1,4 @@
-package com.example.rental.ui
+package com.example.rental
 
 import androidx.multidex.MultiDexApplication
 import com.example.rental.di.DaggerAppComponent
