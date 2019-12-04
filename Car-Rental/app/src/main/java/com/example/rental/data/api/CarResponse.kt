@@ -1,8 +1,8 @@
-package com.example.rental.data.model
+package com.example.rental.data.api
 
 import com.google.gson.annotations.SerializedName
 
-data class Car(
+data class CarResponse(
     @SerializedName("id") val id: String,
     @SerializedName("modelIdentifier") val modelIdentifier: String,
     @SerializedName("modelName") val modelName: String,

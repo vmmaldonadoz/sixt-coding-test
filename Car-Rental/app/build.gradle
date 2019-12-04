@@ -54,6 +54,11 @@ dependencies {
     kapt Libs.daggerCompiler
     kapt Libs.daggerAndroidProcessor
 
+    // Database - Room
+    implementation Libs.room
+    implementation Libs.roomRxJava
+    kapt Libs.roomCompiler
+
     // Image loading - Picasso
     implementation Libs.picasso
 

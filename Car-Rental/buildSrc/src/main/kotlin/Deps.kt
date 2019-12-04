@@ -18,6 +18,7 @@ object Versions {
     val rxKotlin = "2.4.0"
 
     val dagger = "2.25.2"
+    val room = "2.2.2"
 
     val junit = "4.12"
     val extJunit = "1.1.1"
@@ -51,6 +52,10 @@ object Libs {
     val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
     val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
     val daggerAndroidProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
+
+    val room = "androidx.room:room-runtime:${Versions.room}"
+    val roomRxJava = "androidx.room:room-rxjava2:${Versions.room}"
+    val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
 
     val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
 
