@@ -16,7 +16,7 @@ object Versions {
 
     val googleMapsUtils = "0.5"
 
-    val retrofit = "2.1.0"
+    val retrofit = "2.6.2"
     val okhttp = "3.4.1"
     val gson = "2.7"
 
@@ -58,7 +58,7 @@ object Libs {
     val lifecycleViewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
 
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
-    val retrofitRxJava = "com.squareup.retrofit2:adapter-rxjava:${Versions.retrofit}"
+    val retrofitRxJava = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
     val okhttpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
     val gson = "com.google.code.gson:gson:${Versions.gson}"
     val retrofitGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
