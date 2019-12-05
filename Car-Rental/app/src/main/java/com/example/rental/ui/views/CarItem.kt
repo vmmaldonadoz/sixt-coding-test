@@ -32,8 +32,11 @@ data class CarItem(val car: Car) : KotlinModel(R.layout.item_car) {
             context.getString(R.string.label_license_plate, car.licensePlate)
         )
 
+        val height = context.resources.getDimensionPixelSize(R.dimen.image_height)
+        val width = context.resources.getDimensionPixelSize(R.dimen.image_width)
         Picasso.get()
             .load(car.carImageUrl)
+            .resize(width, height)
             .centerCrop()
             .placeholder(R.drawable.ic_car_placeholder)
             .error(R.drawable.ic_car_placeholder)
