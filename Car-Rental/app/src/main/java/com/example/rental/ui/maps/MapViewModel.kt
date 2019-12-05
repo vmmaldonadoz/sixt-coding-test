@@ -19,7 +19,8 @@ import java.util.concurrent.TimeUnit
 
 class MapViewModel(
     private val googleMap: GoogleMap,
-    private val viewModel: SharedMainViewModel
+    private val viewModel: SharedMainViewModel,
+    private val mapCameraMargin: Int
 ) : BaseViewModel() {
 
     private val lastKnownLocation: BehaviorSubject<LatLng> = BehaviorSubject.create()
@@ -71,8 +72,7 @@ class MapViewModel(
             referencePoints.forEach { builder.include(it) }
             val latLngBounds = builder.build()
 
-            val mapMargin = 30
-            val cameraUpdate = CameraUpdateFactory.newLatLngBounds(latLngBounds, mapMargin)
+            val cameraUpdate = CameraUpdateFactory.newLatLngBounds(latLngBounds, mapCameraMargin)
             googleMap.animateCamera(cameraUpdate, TimeUnit.SECONDS.toMillis(1).toInt(), null)
         }
     }
@@ -82,7 +82,7 @@ class MapViewModel(
         availableCars.forEach { car ->
             val latLng = car.getLocation().toLatLng()
             markerCollection.addMarker(
-                MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_information_black_24dp)).position(
+                MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_car_map)).position(
                     latLng
                 ).title(car.name)
             )
@@ -93,7 +93,7 @@ class MapViewModel(
     private fun handleUserLocation(latLng: LatLng) {
         userMarker?.remove()
         userMarker = googleMap.addMarker(
-            MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_map_black_24dp)).position(
+            MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_pin_map)).position(
                 latLng
             ).title("")
         )

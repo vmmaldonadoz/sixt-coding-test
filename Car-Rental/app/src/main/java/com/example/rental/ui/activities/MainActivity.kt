@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.example.rental.R
 import com.example.rental.ui.LocationListener
+import com.example.rental.ui.fragments.CarListFragment
 import com.example.rental.ui.maps.MapViewModel
 import com.example.rental.ui.viewmodels.SharedMainViewModel
 import com.example.rental.utils.isNotNullOrBlank
@@ -15,10 +16,13 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.android.AndroidInjection
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasAndroidInjector
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), HasAndroidInjector {
 
     private lateinit var locationListener: LocationListener
 
@@ -26,6 +30,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     lateinit var viewModel: SharedMainViewModel
+
+    private var mapViewModel: MapViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
@@ -40,7 +46,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupBottomNavigation() {
-        navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+        navigation.apply {
+            setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+            selectedItemId = R.id.navigation_map
+        }
     }
 
     private fun setupViewModel() {
@@ -51,50 +60,53 @@ class MainActivity : AppCompatActivity() {
         lifecycle.addObserver(viewModel)
     }
 
-    private val mapFragment = SupportMapFragment.newInstance().apply {
-        getMapAsync { googleMap ->
-            googleMap.setOnMarkerClickListener { marker ->
-                if (marker.title.isNotNullOrBlank()) {
-                    marker.showInfoWindow()
-                    true
-                } else {
-                    false
+    private val carListFragment by lazy { CarListFragment.newInstance() }
+
+    private val mapFragment by lazy {
+        SupportMapFragment.newInstance().apply {
+            getMapAsync { googleMap ->
+                googleMap.setOnMarkerClickListener { marker ->
+                    if (marker.title.isNotNullOrBlank()) {
+                        marker.showInfoWindow()
+                        true
+                    } else {
+                        false
+                    }
                 }
-            }
-            tryOrPrintException {
-                googleMap.setMapStyle(
-                    MapStyleOptions.loadRawResourceStyle(
-                        this@MainActivity,
-                        R.raw.car_rental_style
+                tryOrPrintException {
+                    googleMap.setMapStyle(
+                        MapStyleOptions.loadRawResourceStyle(
+                            this@MainActivity,
+                            R.raw.car_rental_style
+                        )
                     )
-                )
-            }
-            mapViewModel = MapViewModel(googleMap, viewModel).also { mapViewModel ->
-                lifecycle.addObserver(mapViewModel)
-                mapViewModel.connect()
+                }
+                val mapCameraMargin = resources.getDimensionPixelSize(R.dimen.spacing_huge)
+                mapViewModel =
+                    MapViewModel(googleMap, viewModel, mapCameraMargin).also { mapViewModel ->
+                        lifecycle.addObserver(mapViewModel)
+                        mapViewModel.connect()
+                    }
             }
         }
     }
-
-    private var mapViewModel: MapViewModel? = null
 
     private fun setupLocationListener() {
         locationListener = LocationListener(this, lifecycle) { location ->
             mapViewModel?.updateUserLocation(location)
         }
+        lifecycle.addObserver(locationListener)
     }
 
     private val onNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.navigation_home -> {
-                    true
-                }
                 R.id.navigation_map -> {
                     loadFragment(mapFragment)
                     true
                 }
-                R.id.navigation_information -> {
+                R.id.navigation_home -> {
+                    loadFragment(carListFragment)
                     true
                 }
                 else -> false
@@ -118,5 +130,12 @@ class MainActivity : AppCompatActivity() {
             permissions,
             grantResults
         )
+    }
+
+    @Inject
+    lateinit var androidInjector: DispatchingAndroidInjector<Any>
+
+    override fun androidInjector(): AndroidInjector<Any> {
+        return androidInjector
     }
 }

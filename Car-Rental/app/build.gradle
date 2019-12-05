@@ -24,6 +24,7 @@ android {
 
 kapt {
     generateStubs = true
+    correctErrorTypes = true
 }
 
 dependencies {
@@ -65,10 +66,12 @@ dependencies {
     implementation Libs.appCompat
     implementation Libs.coreKtx
 
+    // Layouts
     implementation Libs.constraintLayout
     implementation Libs.coordinatorLayout
     implementation Libs.materialComponents
 
+    // Google Maps
     implementation Libs.playServicesLocation
     implementation Libs.playServicesMaps
 
@@ -78,6 +81,10 @@ dependencies {
     // Lifecycle
     implementation Libs.lifecycleExtensions
     implementation Libs.lifecycleViewmodel
+
+    // Epoxy
+    implementation Libs.epoxy
+    kapt Libs.epoxyProcessor
 
     // Unit testing
     testImplementation Libs.junit

@@ -3,4 +3,9 @@
     <string name="list_of_cars">List of cars</string>
     <string name="map">Map</string>
     <string name="about_me">About me</string>
+    <string name="label_name"><b>Name:</b> %s</string>
+    <string name="label_model_name">Model: %s</string>
+    <string name="label_color"><b>Color:</b> %s</string>
+    <string name="label_license_plate">License plate: %s</string>
+    <string name="available_cars">Available cars</string>
 </resources>

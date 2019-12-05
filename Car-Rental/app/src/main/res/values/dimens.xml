@@ -33,4 +33,7 @@
     <dimen name="spacing_toolbar">56dp</dimen>
     <dimen name="spacing_double_toolbar">112dp</dimen>
 
+
+    <dimen name="item_min_height">150dp</dimen>
+
 </resources>

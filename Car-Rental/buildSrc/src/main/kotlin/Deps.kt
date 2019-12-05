@@ -7,6 +7,8 @@ object Versions {
     val coreKtx = "1.1.0"
     val lifecycle = "2.1.0"
 
+    val epoxy = "3.8.0"
+
     val constraintLayout = "1.1.3"
     val coordinatorLayout = "1.1.0"
     val materialComponents = "1.0.0"
@@ -20,7 +22,7 @@ object Versions {
     val okhttp = "3.4.1"
     val gson = "2.7"
 
-    val picasso = "2.5.2"
+    val picasso = "2.71828"
 
     val rxJava = "2.2.15"
     val rxAndroid = "2.1.1"
@@ -56,6 +58,9 @@ object Libs {
 
     val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
     val lifecycleViewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+
+    val epoxy = "com.airbnb.android:epoxy:${Versions.epoxy}"
+    val epoxyProcessor = "com.airbnb.android:epoxy-processor:${Versions.epoxy}"
 
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     val retrofitRxJava = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
