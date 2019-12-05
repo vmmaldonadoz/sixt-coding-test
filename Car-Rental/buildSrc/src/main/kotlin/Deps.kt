@@ -5,10 +5,16 @@ object Versions {
     val multidex = "1.0.3"
     val appCompat = "1.1.0"
     val coreKtx = "1.1.0"
+    val lifecycle = "2.1.0"
 
     val constraintLayout = "1.1.3"
     val coordinatorLayout = "1.1.0"
     val materialComponents = "1.0.0"
+
+    val playServicesLocation = "17.0.0"
+    val playServicesMaps = "17.0.0"
+
+    val googleMapsUtils = "0.5"
 
     val retrofit = "2.1.0"
     val okhttp = "3.4.1"
@@ -42,6 +48,14 @@ object Libs {
     val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     val coordinatorLayout = "androidx.coordinatorlayout:coordinatorlayout:${Versions.coordinatorLayout}"
     val materialComponents = "com.google.android.material:material:${Versions.materialComponents}"
+
+    val playServicesLocation = "com.google.android.gms:play-services-location:${Versions.playServicesLocation}"
+    val playServicesMaps = "com.google.android.gms:play-services-maps:${Versions.playServicesMaps}"
+
+    val googleMapsUtils = "com.google.maps.android:android-maps-utils:${Versions.googleMapsUtils}"
+
+    val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
+    val lifecycleViewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
 
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     val retrofitRxJava = "com.squareup.retrofit2:adapter-rxjava:${Versions.retrofit}"

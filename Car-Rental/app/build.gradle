@@ -20,9 +20,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding {
-        enabled = true
-    }
 }
 
 kapt {
@@ -71,6 +68,16 @@ dependencies {
     implementation Libs.constraintLayout
     implementation Libs.coordinatorLayout
     implementation Libs.materialComponents
+
+    implementation Libs.playServicesLocation
+    implementation Libs.playServicesMaps
+
+    // Google Maps Utils
+    implementation Libs.googleMapsUtils
+
+    // Lifecycle
+    implementation Libs.lifecycleExtensions
+    implementation Libs.lifecycleViewmodel
 
     // Unit testing
     testImplementation Libs.junit

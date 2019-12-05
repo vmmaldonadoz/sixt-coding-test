@@ -2,13 +2,14 @@ package com.example.rental.data.room
 
 import androidx.room.*
 import io.reactivex.Maybe
+import io.reactivex.Observable
 import io.reactivex.Single
 
 @Dao
 interface CarInformationDao {
 
     @Query("SELECT * FROM car")
-    fun getAll(): Single<List<Car>>
+    fun getAll(): Observable<List<Car>>
 
     @Query("SELECT * FROM car WHERE id  = :carId")
     fun getCarById(carId: String): Maybe<Car>

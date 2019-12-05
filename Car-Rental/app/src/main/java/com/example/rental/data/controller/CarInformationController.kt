@@ -6,7 +6,7 @@ import com.example.rental.data.room.Car
 import com.example.rental.data.room.CarInformationDao
 import io.reactivex.Completable
 import io.reactivex.Maybe
-import io.reactivex.Single
+import io.reactivex.Observable
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -17,7 +17,7 @@ class CarInformationController @Inject constructor(
     val carInformationMapper: CarInformationMapper
 ) {
 
-    fun updateAvailableCars(): Completable? {
+    fun updateAvailableCars(): Completable {
         return carsService.getAvailableCars()
             .map { response -> carInformationMapper.mapListOfCars(response) }
             .switchMapCompletable { cars ->
@@ -27,7 +27,7 @@ class CarInformationController @Inject constructor(
             }
     }
 
-    fun getAvailableCars(): Single<List<Car>> {
+    fun getAvailableCars(): Observable<List<Car>> {
         return carInformationDao.getAll()
     }
 

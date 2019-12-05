@@ -15,7 +15,7 @@
         tools:showAsAction="always" />
 
     <item
-        android:id="@+id/navigation_borrow_a_bike"
+        android:id="@+id/navigation_information"
         android:icon="@drawable/ic_information_black_24dp"
         android:title="@string/about_me"
         tools:showAsAction="always" />

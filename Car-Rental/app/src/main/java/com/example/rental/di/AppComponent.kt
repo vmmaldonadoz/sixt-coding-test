@@ -15,7 +15,8 @@ import javax.inject.Singleton
         AppModule::class,
         ActivityBuilder::class,
         NetworkModule::class,
-        DatabaseModule::class
+        DatabaseModule::class,
+        ViewModelModule::class
     ]
 )
 interface AppComponent : AndroidInjector<CarRentalApp> {
