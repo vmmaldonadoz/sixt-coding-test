@@ -20,6 +20,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 kapt {
@@ -64,7 +67,10 @@ dependencies {
 
     implementation Libs.appCompat
     implementation Libs.coreKtx
+
     implementation Libs.constraintLayout
+    implementation Libs.coordinatorLayout
+    implementation Libs.materialComponents
 
     // Unit testing
     testImplementation Libs.junit

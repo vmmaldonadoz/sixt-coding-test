@@ -1,4 +1,4 @@
-package com.example.rental.ui
+package com.example.rental.ui.activities
 
 import android.content.Intent
 import android.os.Bundle

@@ -5,7 +5,10 @@ object Versions {
     val multidex = "1.0.3"
     val appCompat = "1.1.0"
     val coreKtx = "1.1.0"
+
     val constraintLayout = "1.1.3"
+    val coordinatorLayout = "1.1.0"
+    val materialComponents = "1.0.0"
 
     val retrofit = "2.1.0"
     val okhttp = "3.4.1"
@@ -35,7 +38,10 @@ object Libs {
     val multidex = "com.android.support:multidex:${Versions.multidex}"
     val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
+
     val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    val coordinatorLayout = "androidx.coordinatorlayout:coordinatorlayout:${Versions.coordinatorLayout}"
+    val materialComponents = "com.google.android.material:material:${Versions.materialComponents}"
 
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     val retrofitRxJava = "com.squareup.retrofit2:adapter-rxjava:${Versions.retrofit}"
